@@ -50,7 +50,8 @@
     "f" 'projectile-find-file
     "p" 'projectile-switch-project
     "q" 'restart-emacs
-    "x" 'delete-window))
+    "x" 'delete-window
+    "z" '(lambda()(interactive)(find-file "~/.emacs.d/init.el"))))
 
 (use-package evil-magit
   :ensure t)
@@ -74,6 +75,7 @@
 (use-package restart-emacs
   :ensure t)
 
+(global-prettify-symbols-mode 1)
 (global-hl-line-mode 1)
 (setq make-backup-files nil)
 (setq auto-save-default nil)
@@ -83,6 +85,7 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
+(add-hook 'with-editor-mode-hook 'evil-insert-state)
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
  
 (custom-set-variables
