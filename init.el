@@ -19,7 +19,10 @@
 (use-package dashboard
   :ensure t
   :config
-  (dashboard-setup-startup-hook))
+  (dashboard-setup-startup-hook)
+  (setq dashboard-startup-banner 'logo)
+  (setq dashboard-items '((projects .5)
+			  (recents . 5))))
 
 (use-package projectile
   :ensure t
@@ -40,11 +43,17 @@
   (general-create-definer my-leader-def
 			  :prefix "SPC")
   (my-leader-def
-   :keymaps 'normal
-   "g" 'magit-status
-   "f" 'projectile-find-file
-   "p" 'projectile-switch-project
-   "q" 'restart-emacs))
+    :states 'normal
+    :keymaps 'override
+    "e" 'eval-last-sexp
+    "g" 'magit-status
+    "f" 'projectile-find-file
+    "p" 'projectile-switch-project
+    "q" 'restart-emacs
+    "x" 'delete-window))
+
+(use-package evil-magit
+  :ensure t)
 
 (use-package gruvbox-theme
   :ensure t)
@@ -74,6 +83,7 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
  
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -86,7 +96,7 @@
     ("f27c3fcfb19bf38892bc6e72d0046af7a1ded81f54435f9d4d09b3bff9c52fc1" default)))
  '(package-selected-packages
    (quote
-    (general evil magit projectile rainbow-delimiters gruvbox-theme geiser spaceline spacemacs-theme use-package))))
+    (evil-magit general evil magit projectile rainbow-delimiters gruvbox-theme geiser spaceline spacemacs-theme use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
