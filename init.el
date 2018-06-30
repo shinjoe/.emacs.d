@@ -35,7 +35,9 @@
 (use-package evil
   :ensure t
   :config
-  (evil-mode 1))
+  (evil-mode 1)
+  (add-to-list 'evil-buffer-regexps '("*Backtrace*" . normal))
+  (add-to-list 'evil-buffer-regexps '("*Packages*" . normal)))
 
 (use-package general
   :ensure t
@@ -63,8 +65,8 @@
 
 (use-package rainbow-delimiters
   :ensure t
-  :config
-  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
+  :hook
+  (prog-mode . rainbow-delimiters-mode))
 
 
 (use-package spaceline
@@ -72,6 +74,13 @@
   :config
   (require 'spaceline-config)
   (spaceline-spacemacs-theme))
+
+(use-package smartparens
+  :ensure t
+  :config
+  (require 'smartparens-config)
+  :hook
+  (prog-mode . smartparens-mode))
 
 
 (use-package restart-emacs
@@ -101,7 +110,7 @@
     ("f27c3fcfb19bf38892bc6e72d0046af7a1ded81f54435f9d4d09b3bff9c52fc1" default)))
  '(package-selected-packages
    (quote
-    (evil-magit general evil magit projectile rainbow-delimiters gruvbox-theme geiser spaceline spacemacs-theme use-package))))
+    (smartparens evil-magit general evil magit projectile rainbow-delimiters gruvbox-theme geiser spaceline spacemacs-theme use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
