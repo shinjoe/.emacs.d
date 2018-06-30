@@ -21,7 +21,7 @@
   :config
   (dashboard-setup-startup-hook)
   (setq dashboard-startup-banner 'logo)
-  (setq dashboard-items '((projects .5)
+  (setq dashboard-items '((projects . 5)
 			  (recents . 5))))
 
 (use-package projectile
@@ -46,6 +46,8 @@
     :states 'normal
     :keymaps 'override
     "e" 'eval-last-sexp
+    "j" '(lambda()(interactive)(split-window-below)(other-window 1)(switch-to-buffer (get-buffer-create "*scratch*")))
+    "k" '(lambda()(interactive)(split-window-right)(other-window 1)(switch-to-buffer (get-buffer-create "*scratch*")))
     "g" 'magit-status
     "f" 'projectile-find-file
     "p" 'projectile-switch-project
