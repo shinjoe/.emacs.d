@@ -82,6 +82,15 @@
   :hook
   (prog-mode . smartparens-mode))
 
+(use-package diminish
+  :ensure t
+  :config
+  (diminish 'smartparens-mode)
+  (diminish 'undo-tree-mode)
+  (diminish 'auto-revert-mode)
+  (diminish 'eldoc-mode)
+  (diminish 'which-key-mode))
+
 
 (use-package restart-emacs
   :ensure t)
@@ -113,7 +122,7 @@
     ("f27c3fcfb19bf38892bc6e72d0046af7a1ded81f54435f9d4d09b3bff9c52fc1" default)))
  '(package-selected-packages
    (quote
-    (smartparens evil-magit general evil magit projectile rainbow-delimiters gruvbox-theme geiser spaceline spacemacs-theme use-package))))
+    (diminish smartparens evil-magit general evil magit projectile rainbow-delimiters gruvbox-theme geiser spaceline spacemacs-theme use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
