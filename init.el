@@ -13,6 +13,7 @@
 
 (use-package which-key
   :ensure t
+  :diminish which-key-mode
   :config
   (which-key-mode))
 
@@ -77,6 +78,7 @@
 
 (use-package smartparens
   :ensure t
+  :diminish smartparens-mode
   :config
   (require 'smartparens-config)
   :hook
@@ -85,11 +87,9 @@
 (use-package diminish
   :ensure t
   :config
-  (diminish 'smartparens-mode)
   (diminish 'undo-tree-mode)
   (diminish 'auto-revert-mode)
-  (diminish 'eldoc-mode)
-  (diminish 'which-key-mode))
+  (diminish 'eldoc-mode))
 
 
 (use-package restart-emacs
