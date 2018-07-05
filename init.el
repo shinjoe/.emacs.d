@@ -38,6 +38,7 @@
   :config
   (evil-mode 1)
   (add-to-list 'evil-buffer-regexps '("*Backtrace*" . normal))
+  (add-to-list 'evil-buffer-regexps '("*Help*" . normal))
   (add-to-list 'evil-buffer-regexps '("*Packages*" . normal)))
 
 (use-package general
@@ -48,6 +49,7 @@
   (my-leader-def
     :states 'normal
     :keymaps 'override
+    "SPC" 'execute-extended-command
     "e" 'eval-last-sexp
     "j" '(lambda()(interactive)(split-window-below)(other-window 1)(switch-to-buffer (get-buffer-create "*scratch*")))
     "k" '(lambda()(interactive)(split-window-right)(other-window 1)(switch-to-buffer (get-buffer-create "*scratch*")))
