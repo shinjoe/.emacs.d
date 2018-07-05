@@ -56,6 +56,7 @@
     "g" 'magit-status
     "f" 'projectile-find-file
     "p" 'projectile-switch-project
+    "s" 'ace-window
     "q" 'restart-emacs
     "x" 'delete-window
     "z" '(lambda()(interactive)(find-file "~/.emacs.d/init.el"))))
@@ -70,6 +71,11 @@
   :ensure t
   :hook
   (prog-mode . rainbow-delimiters-mode))
+
+(use-package ace-window
+  :ensure t
+  :config
+  (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)))
 
 
 (use-package spaceline
