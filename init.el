@@ -105,6 +105,7 @@
 
 (global-prettify-symbols-mode 1)
 (global-hl-line-mode 1)
+(setq help-window-select t)
 (setq make-backup-files nil)
 (setq auto-save-default nil)
 (setq inhibit-startup-screen t)
