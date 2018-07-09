@@ -39,6 +39,7 @@
   (evil-mode 1)
   (add-to-list 'evil-buffer-regexps '("*Backtrace*" . normal))
   (add-to-list 'evil-buffer-regexps '("*Help*" . normal))
+  (add-to-list 'evil-buffer-regexps '("* Racket REPL *" . normal))
   (add-to-list 'evil-buffer-regexps '("*Packages*" . normal)))
 
 (use-package general
@@ -59,6 +60,7 @@
     "s" 'ace-window
     "q" 'restart-emacs
     "x" 'delete-window
+    "y" 'geiser-mode-switch-to-repl-and-enter
     "z" '(lambda()(interactive)(find-file "~/.emacs.d/init.el"))))
 
 (use-package evil-magit
@@ -79,6 +81,7 @@
 
 (use-package geiser
   :ensure t
+  :diminish geiser-autodoc-mode
   :config
   (setq geiser-active-implementations '(racket))
   (setq geiser-racket-binary "Racket.exe"))
