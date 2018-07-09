@@ -77,6 +77,11 @@
   :config
   (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)))
 
+(use-package geiser
+  :ensure t
+  :config
+  (setq geiser-active-implementations '(racket))
+  (setq geiser-racket-binary "Racket.exe"))
 
 (use-package spaceline
   :ensure t
