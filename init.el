@@ -18,6 +18,12 @@
   :config
   (which-key-mode))
 
+(use-package beacon
+  :ensure t
+  :diminish beacon-mode
+  :config
+  (beacon-mode 1))
+
 (use-package dashboard
   :ensure t
   :config
@@ -26,8 +32,22 @@
   (setq dashboard-items '((projects . 5)
 			  (recents . 5))))
 
+(use-package counsel 
+  :ensure t
+  :diminish counsel-mode
+  :config
+  (counsel-mode)
+  (setq ivy-use-virtual-buffers t)
+  (setq enable-recursive-minibuffers t))
+
+(use-package counsel-projectile
+  :ensure t
+  :config
+  (counsel-projectile-mode))
+
 (use-package projectile
   :ensure t
+  :diminish projectile-mode
   :config
   (projectile-mode))
 
@@ -39,6 +59,7 @@
   :config
   (evil-mode 1)
   (add-to-list 'evil-buffer-regexps '("*Backtrace*" . normal))
+  (add-to-list 'evil-buffer-regexps '("*Compile-Log*" . normal))
   (add-to-list 'evil-buffer-regexps '("*Help*" . normal))
   (add-to-list 'evil-buffer-regexps '("* Racket REPL *" . normal))
   (add-to-list 'evil-buffer-regexps '("*Packages*" . normal)))
@@ -126,6 +147,7 @@
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
 (setq mouse-wheel-progressive-speed nil)
 (setq scroll-step 1)
+(setq scroll-margin 3)
 (scroll-bar-mode -1)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
@@ -145,7 +167,7 @@
     ("f27c3fcfb19bf38892bc6e72d0046af7a1ded81f54435f9d4d09b3bff9c52fc1" default)))
  '(package-selected-packages
    (quote
-    (diminish smartparens evil-magit general evil magit projectile rainbow-delimiters gruvbox-theme geiser spaceline spacemacs-theme use-package))))
+    (beacon counsel diminish smartparens evil-magit general evil magit projectile rainbow-delimiters gruvbox-theme geiser spaceline spacemacs-theme use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
