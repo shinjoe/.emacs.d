@@ -32,7 +32,7 @@
   (setq dashboard-items '((projects . 5)
 			  (recents . 5))))
 
-(use-package counsel 
+(use-package counsel
   :ensure t
   :diminish counsel-mode
   :config
@@ -78,6 +78,7 @@
     "k" '(lambda()(interactive)(split-window-right)(other-window 1)(switch-to-buffer (get-buffer-create "*scratch*")))
     "g" 'magit-status
     "f" 'projectile-find-file
+    "F" 'find-file
     "p" 'projectile-switch-project
     "s" 'ace-window
     "q" 'restart-emacs
@@ -103,10 +104,10 @@
 
 (use-package geiser
   :ensure t
-  :diminish geiser-autodoc-mode
   :config
   (setq geiser-active-implementations '(racket))
-  (setq geiser-racket-binary "Racket.exe"))
+  (setq geiser-racket-binary "Racket.exe")
+  (add-hook 'scheme-mode-hook '(lambda()(diminish geiser-autodoc-mode))))
 
 (use-package spaceline
   :ensure t
