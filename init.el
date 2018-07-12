@@ -106,8 +106,7 @@
   :ensure t
   :config
   (setq geiser-active-implementations '(racket))
-  (setq geiser-racket-binary "Racket.exe")
-  (add-hook 'scheme-mode-hook '(lambda()(diminish geiser-autodoc-mode))))
+  (setq geiser-racket-binary "Racket.exe"))
 
 (use-package spaceline
   :ensure t
