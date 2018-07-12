@@ -105,6 +105,7 @@
 (use-package geiser
   :ensure t
   :config
+  (add-hook 'geiser-autodoc-mode-hook  '(lambda()(diminish 'geiser-autodoc-mode)))
   (setq geiser-active-implementations '(racket))
   (setq geiser-racket-binary "Racket.exe"))
 
@@ -147,6 +148,7 @@
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
 (setq mouse-wheel-progressive-speed nil)
 (setq scroll-step 1)
+(setq scroll-conservatively 10000)
 (setq scroll-margin 3)
 (scroll-bar-mode -1)
 (menu-bar-mode -1)
