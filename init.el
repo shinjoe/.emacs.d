@@ -11,6 +11,7 @@
 (eval-when-compile
   (require 'use-package))
 
+
 (use-package which-key
   :ensure t
   :diminish which-key-mode
@@ -60,7 +61,7 @@
     "s" 'ace-window
     "q" 'restart-emacs
     "x" 'delete-window
-    "y" 'geiser-mode-switch-to-repl-and-enter
+    "y" '(lambda()(interactive)(let ((current-prefix-arg 4))(call-interactively 'geiser-compile-current-buffer)))
     "z" '(lambda()(interactive)(find-file "~/.emacs.d/init.el"))))
 
 (use-package evil-magit
@@ -106,6 +107,10 @@
   (diminish 'undo-tree-mode)
   (diminish 'auto-revert-mode)
   (diminish 'eldoc-mode))
+
+(use-package company
+  :ensure t
+  :hook (after-init . global-company-mode))
 
 
 (use-package restart-emacs
