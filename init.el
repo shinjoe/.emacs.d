@@ -1,7 +1,7 @@
 (require 'package)
 (setq package-enable-at-startup nil)
 (add-to-list 'package-archives
-	     '("melpa" . "https://melpa.org/packages/"))
+             '("melpa" . "https://melpa.org/packages/"))
 (package-initialize)
 
 (unless (package-installed-p 'use-package)
@@ -30,7 +30,7 @@
   (dashboard-setup-startup-hook)
   (setq dashboard-startup-banner 'logo)
   (setq dashboard-items '((projects . 5)
-			  (recents . 5))))
+                          (recents . 5))))
 
 (use-package counsel
   :ensure t
@@ -68,7 +68,7 @@
   :ensure t
   :config
   (general-create-definer my-leader-def
-			  :prefix "SPC")
+    :prefix "SPC")
   (my-leader-def
     :states 'normal
     :keymaps 'override
@@ -150,14 +150,16 @@
 (setq scroll-step 1)
 (setq scroll-conservatively 10000)
 (setq scroll-margin 3)
+(setq-default indent-tabs-mode nil)
 (scroll-bar-mode -1)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (show-paren-mode 1)
+(add-hook 'prog-mode-hook 'whitespace-mode)
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 (add-hook 'with-editor-mode-hook 'evil-insert-state)
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
- 
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
