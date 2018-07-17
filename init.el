@@ -151,6 +151,7 @@
 (setq scroll-conservatively 10000)
 (setq scroll-margin 3)
 (setq-default indent-tabs-mode nil)
+(setq whitespace-style '(face tabs spaces empty trailing space-before-tab newline indentation space-after-tab space-mark tab-mark))
 (scroll-bar-mode -1)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
