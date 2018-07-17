@@ -157,6 +157,7 @@
 (tool-bar-mode -1)
 (show-paren-mode 1)
 (add-hook 'prog-mode-hook 'whitespace-mode)
+(add-hook 'whitespace-mode-hook '(lambda()(diminish 'whitespace-mode)))
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 (add-hook 'with-editor-mode-hook 'evil-insert-state)
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
