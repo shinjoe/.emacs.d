@@ -97,7 +97,7 @@
   :config
   (setq doom-themes-enable-bold t)
   (setq doom-themes-enable-italic t)
-  (load-theme 'doom-one t))
+  (load-theme 'doom-city-lights t))
 
 (use-package rainbow-delimiters
   :ensure t
@@ -145,6 +145,7 @@
 (use-package restart-emacs
   :ensure t)
 
+(global-set-key "\C-s" 'swiper)
 (global-prettify-symbols-mode 1)
 (global-hl-line-mode 1)
 (setq help-window-select t)
