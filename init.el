@@ -7,6 +7,7 @@
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
+(setq use-package-verbose t)
 
 (eval-when-compile
   (require 'use-package))
@@ -89,8 +90,13 @@
 (use-package evil-magit
   :ensure t)
 
-(use-package gruvbox-theme
-  :ensure t)
+(use-package doom-themes
+  :ensure t
+  :config
+  (setq doom-themes-enable-bold t)
+  (setq doom-themes-enable-italic t)
+  (load-theme 'doom-one t)
+  (doom-themes-visual-bell-config))
 
 (use-package rainbow-delimiters
   :ensure t
@@ -167,13 +173,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (gruvbox-dark-hard)))
  '(custom-safe-themes
    (quote
     ("f27c3fcfb19bf38892bc6e72d0046af7a1ded81f54435f9d4d09b3bff9c52fc1" default)))
  '(package-selected-packages
    (quote
-    (beacon counsel diminish smartparens evil-magit general evil magit projectile rainbow-delimiters gruvbox-theme geiser spaceline spacemacs-theme use-package))))
+    (doom-themes beacon counsel diminish smartparens evil-magit general evil magit projectile rainbow-delimiters geiser spaceline spacemacs-theme use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
