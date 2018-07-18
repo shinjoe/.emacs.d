@@ -95,8 +95,7 @@
   :config
   (setq doom-themes-enable-bold t)
   (setq doom-themes-enable-italic t)
-  (load-theme 'doom-one t)
-  (doom-themes-visual-bell-config))
+  (load-theme 'doom-one t))
 
 (use-package rainbow-delimiters
   :ensure t
