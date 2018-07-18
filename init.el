@@ -38,6 +38,7 @@
   :diminish counsel-mode
   :config
   (counsel-mode)
+  (ivy-mode)
   (setq ivy-use-virtual-buffers t)
   (setq enable-recursive-minibuffers t))
 
@@ -74,6 +75,7 @@
     :states 'normal
     :keymaps 'override
     "SPC" 'execute-extended-command
+    "TAB" 'switch-to-buffer
     "e" 'eval-last-sexp
     "j" '(lambda()(interactive)(split-window-below)(other-window 1)(switch-to-buffer (get-buffer-create "*scratch*")))
     "k" '(lambda()(interactive)(split-window-right)(other-window 1)(switch-to-buffer (get-buffer-create "*scratch*")))
