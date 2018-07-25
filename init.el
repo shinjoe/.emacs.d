@@ -12,6 +12,8 @@
 (eval-when-compile
   (require 'use-package))
 
+(defun rp()
+  (interactive)(elpy-shell-send-region-or-buffer))
 
 (use-package which-key
   :ensure t
@@ -19,11 +21,19 @@
   :config
   (which-key-mode))
 
+(use-package smex
+  :ensure t
+  :config
+  (smex-initialize))
+
 (use-package beacon
   :ensure t
   :diminish beacon-mode
   :config
   (beacon-mode 1))
+
+(use-package flycheck
+  :ensure t)
 
 (use-package dashboard
   :ensure t
@@ -112,7 +122,7 @@
 (use-package geiser
   :ensure t
   :config
-  (add-hook 'geiser-autodoc-mode-hook  '(lambda()(diminish 'geiser-autodoc-mode)))
+  (add-hook 'geiser-autodoc-mode-hook '(lambda()(diminish 'geiser-autodoc-mode)))
   (setq geiser-active-implementations '(racket))
   (setq geiser-racket-binary "Racket.exe"))
 
@@ -141,9 +151,16 @@
   :ensure t
   :hook (after-init . global-company-mode))
 
+(use-package elpy
+  :ensure t
+  :config
+  (elpy-enable))
+
 
 (use-package restart-emacs
   :ensure t)
+
+(defalias 'yes-or-no-p 'y-or-n-p)
 
 (global-set-key "\C-s" 'swiper)
 (global-prettify-symbols-mode 1)
@@ -168,6 +185,7 @@
 (add-hook 'whitespace-mode-hook '(lambda()(diminish 'whitespace-mode)))
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 (add-hook 'with-editor-mode-hook 'evil-insert-state)
+(add-hook 'python-mode-hook 'global-flycheck-mode)
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 (custom-set-variables
@@ -177,7 +195,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (doom-themes beacon counsel diminish smartparens evil-magit general evil magit projectile rainbow-delimiters geiser spaceline use-package))))
+    (smex flycheck elpy doom-themes beacon counsel diminish smartparens evil-magit general evil magit projectile rainbow-delimiters geiser spaceline use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
