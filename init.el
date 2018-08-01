@@ -40,8 +40,8 @@
   :config
   (dashboard-setup-startup-hook)
   (setq dashboard-startup-banner 'logo)
-  (setq dashboard-items '((projects . 5)
-                          (recents . 5))))
+  (setq dashboard-items '((recents . 5)
+                          (projects . 5))))
 
 (use-package counsel
   :ensure t
@@ -154,13 +154,16 @@
 (use-package elpy
   :ensure t
   :config
-  (elpy-enable))
-
+  (elpy-enable)
+  (add-hook 'highlight-indentation-mode-hook '(lambda()(diminish 'highlight-indentation-mode))))
 
 (use-package restart-emacs
   :ensure t)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
+(defconst python--prettify-symbols-alist
+    '(("lambda"  . ?λ)))
+
 
 (global-set-key "\C-s" 'swiper)
 (global-prettify-symbols-mode 1)
@@ -185,7 +188,7 @@
 (add-hook 'whitespace-mode-hook '(lambda()(diminish 'whitespace-mode)))
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 (add-hook 'with-editor-mode-hook 'evil-insert-state)
-(add-hook 'python-mode-hook 'global-flycheck-mode)
+(add-hook 'python-mode-hook '(lambda()(global-flycheck-mode)))
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 (custom-set-variables
