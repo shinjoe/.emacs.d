@@ -188,7 +188,7 @@
 (add-hook 'whitespace-mode-hook '(lambda()(diminish 'whitespace-mode)))
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 (add-hook 'with-editor-mode-hook 'evil-insert-state)
-(add-hook 'python-mode-hook '(lambda()(global-flycheck-mode)))
+(add-hook 'python-mode-hook 'global-flycheck-mode)
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 (custom-set-variables
