@@ -26,6 +26,9 @@
   :config
   (smex-initialize))
 
+(use-package swift-mode
+  :ensure t)
+
 (use-package beacon
   :ensure t
   :diminish beacon-mode
@@ -138,6 +141,7 @@
   :config
   (require 'smartparens-config)
   :hook
+
   (prog-mode . smartparens-mode))
 
 (use-package diminish
@@ -168,6 +172,7 @@
 (global-set-key "\C-s" 'swiper)
 (global-prettify-symbols-mode 1)
 (global-hl-line-mode 1)
+(setq ring-bell-function 'ignore)
 (setq help-window-select t)
 (setq make-backup-files nil)
 (setq auto-save-default nil)
