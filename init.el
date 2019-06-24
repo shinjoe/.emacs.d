@@ -129,11 +129,9 @@
   (setq geiser-active-implementations '(racket))
   (setq geiser-racket-binary "Racket.exe"))
 
-(use-package spaceline
+(use-package doom-modeline
   :ensure t
-  :config
-  (require 'spaceline-config)
-  (spaceline-spacemacs-theme))
+  :hook (after-init . doom-modeline-mode))
 
 (use-package smartparens
   :ensure t
