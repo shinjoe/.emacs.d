@@ -94,8 +94,10 @@
     "SPC" 'execute-extended-command
     "TAB" 'switch-to-buffer
     "e" 'eval-last-sexp
-    "j" '(lambda()(interactive)(split-window-below)(other-window 1)(switch-to-buffer (get-buffer-create "*scratch*")))
-    "k" '(lambda()(interactive)(split-window-right)(other-window 1)(switch-to-buffer (get-buffer-create "*scratch*")))
+    "j" '((lambda()(interactive)(split-window-below)(other-window 1)(switch-to-buffer (get-buffer-create "*scratch*")))
+          :which-key "split-below")
+    "k" '((lambda()(interactive)(split-window-right)(other-window 1)(switch-to-buffer (get-buffer-create "*scratch*")))
+          :which-key "split-right")
     "g" 'magit-status
     "f" 'projectile-find-file
     "F" 'find-file
@@ -103,8 +105,10 @@
     "s" 'ace-window
     "q" 'restart-emacs
     "x" 'delete-window
-    "y" '(lambda()(interactive)(let ((current-prefix-arg 4))(call-interactively 'geiser-compile-current-buffer)))
-    "z" '(lambda()(interactive)(find-file "~/.emacs.d/init.el"))))
+    "y" '((lambda()(interactive)(let ((current-prefix-arg 4))(call-interactively 'geiser-compile-current-buffer)))
+          :which-key "geiser compile")
+    "z" '((lambda()(interactive)(find-file "~/.emacs.d/init.el"))
+          :which-key "init.el")))
 
 (use-package evil-magit
   :ensure t
