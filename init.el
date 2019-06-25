@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (require 'package)
 (setq package-enable-at-startup nil)
 (add-to-list 'package-archives
@@ -27,11 +28,13 @@
   (smex-initialize))
 
 (use-package swift-mode
-  :ensure t)
+  :ensure t
+  :mode "\\.swift\\'")
 
 (use-package beacon
   :ensure t
   :diminish beacon-mode
+  :defer t
   :config
   (beacon-mode 1))
 
@@ -67,7 +70,8 @@
   (projectile-mode))
 
 (use-package magit
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package evil
   :ensure t
@@ -103,7 +107,8 @@
     "z" '(lambda()(interactive)(find-file "~/.emacs.d/init.el"))))
 
 (use-package evil-magit
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package doom-themes
   :ensure t
@@ -124,6 +129,7 @@
 
 (use-package geiser
   :ensure t
+  :defer t
   :config
   (add-hook 'geiser-autodoc-mode-hook '(lambda()(diminish 'geiser-autodoc-mode)))
   (setq geiser-active-implementations '(racket))
@@ -139,7 +145,6 @@
   :config
   (require 'smartparens-config)
   :hook
-
   (prog-mode . smartparens-mode))
 
 (use-package diminish
@@ -155,17 +160,19 @@
 
 (use-package elpy
   :ensure t
+  :mode ("\\.py\\'" . python-mode)
+  :interpreter ("python" . python-mode)
   :config
   (elpy-enable)
   (add-hook 'highlight-indentation-mode-hook '(lambda()(diminish 'highlight-indentation-mode))))
 
 (use-package restart-emacs
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 (defconst python--prettify-symbols-alist
     '(("lambda"  . ?λ)))
-
 
 (global-set-key "\C-s" 'swiper)
 (global-prettify-symbols-mode 1)
