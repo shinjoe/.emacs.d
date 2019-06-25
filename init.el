@@ -45,6 +45,9 @@
   (setq dashboard-items '((recents . 5)
                           (projects . 5))))
 
+(use-package vscode-icon
+  :ensure t
+  :commands (vscode-icon-for-file))
 (use-package dired-sidebar
   :ensure t
   :commands (dired-sidebar-toggle-sidebar)
