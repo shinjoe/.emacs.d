@@ -7,7 +7,6 @@
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/"))
 (package-initialize)
-
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
@@ -46,6 +45,15 @@
   (setq dashboard-items '((recents . 5)
                           (projects . 5))))
 
+(use-package dired-sidebar
+  :ensure t
+  :commands (dired-sidebar-toggle-sidebar)
+  :config
+  (setq dired-sidebar-subtree-line-prefix "__")
+  (setq dired-sidebar-theme 'vscode)
+  (setq dired-sidebar-use-term-integration t)
+  (setq dired-sidebar-use-custom-font t))
+
 (use-package counsel
   :ensure t
   :hook (after-init . counsel-mode)
@@ -78,6 +86,7 @@
   (add-to-list 'evil-buffer-regexps '("*Compile-Log*" . normal))
   (add-to-list 'evil-buffer-regexps '("*Help*" . normal))
   (add-to-list 'evil-buffer-regexps '("* Racket REPL *" . normal))
+  (add-to-list 'evil-buffer-regexps '("*Customize Group: Emacs*" . normal))
   (add-to-list 'evil-buffer-regexps '("*Packages*" . normal)))
 
 (use-package general
@@ -89,7 +98,8 @@
     :states 'normal
     :keymaps 'override
     "SPC" 'execute-extended-command
-    "TAB" 'switch-to-buffer
+    "TAB" 'dired-sidebar-toggle-sidebar
+    "b" 'switch-to-buffer
     "e" 'eval-last-sexp
     "j" '((lambda()(interactive)(split-window-below)(other-window 1)(switch-to-buffer (get-buffer-create "*scratch*")))
           :which-key "split-below")
