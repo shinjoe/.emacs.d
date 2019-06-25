@@ -22,12 +22,6 @@
   :config
   (which-key-mode))
 
-(use-package smex
-  :ensure t
-  :defer t
-  :config
-  (smex-initialize))
-
 (use-package swift-mode
   :ensure t
   :mode "\\.swift\\'")
