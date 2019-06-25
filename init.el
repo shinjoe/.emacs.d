@@ -184,6 +184,7 @@
 (setq auto-save-default nil)
 (setq inhibit-startup-screen t)
 (setq visible-bell t)
+(setq display-line-numbers-width-start t)
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
 (setq mouse-wheel-progressive-speed nil)
 (setq scroll-step 1)
