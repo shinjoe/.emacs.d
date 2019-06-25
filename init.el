@@ -18,12 +18,14 @@
 
 (use-package which-key
   :ensure t
+  :defer t
   :diminish which-key-mode
   :config
   (which-key-mode))
 
 (use-package smex
   :ensure t
+  :defer t
   :config
   (smex-initialize))
 
@@ -34,12 +36,11 @@
 (use-package beacon
   :ensure t
   :diminish beacon-mode
-  :defer t
-  :config
-  (beacon-mode 1))
+  :hook (prog-mode . beacon-mode))
 
 (use-package flycheck
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package dashboard
   :ensure t
@@ -51,20 +52,20 @@
 
 (use-package counsel
   :ensure t
+  :hook (after-init . counsel-mode)
   :diminish counsel-mode
   :config
-  (counsel-mode)
   (ivy-mode)
   (setq ivy-use-virtual-buffers t)
   (setq enable-recursive-minibuffers t))
 
 (use-package counsel-projectile
   :ensure t
-  :config
-  (counsel-projectile-mode))
+  :hook (after-init . counsel-projectile-mode))
 
 (use-package projectile
   :ensure t
+  :defer t
   :diminish projectile-mode
   :config
   (projectile-mode))
@@ -108,7 +109,7 @@
 
 (use-package evil-magit
   :ensure t
-  :defer t)
+  :after magit)
 
 (use-package doom-themes
   :ensure t
