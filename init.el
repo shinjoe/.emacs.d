@@ -98,7 +98,7 @@
   (general-create-definer my-leader-def
     :prefix "SPC")
   (my-leader-def
-    :states 'normal
+    :states '(normal visual)
     :keymaps 'override
     "SPC" 'execute-extended-command
     "TAB" 'dired-sidebar-toggle-sidebar
