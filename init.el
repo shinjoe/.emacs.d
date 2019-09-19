@@ -24,6 +24,13 @@
   :config
   (which-key-mode))
 
+(use-package rust-mode
+  :ensure t
+  :mode "\\.rs\\'")
+(use-package cargo
+  :ensure t
+  :hook (rust-mode . cargo-minor-mode))
+
 (use-package swift-mode
   :ensure t
   :mode "\\.swift\\'")
@@ -88,6 +95,7 @@
   (add-to-list 'evil-buffer-regexps '("*Backtrace*" . normal))
   (add-to-list 'evil-buffer-regexps '("*Compile-Log*" . normal))
   (add-to-list 'evil-buffer-regexps '("*Help*" . normal))
+  (add-to-list 'evil-buffer-regexps '("*Cargo Build*" . normal))
   (add-to-list 'evil-buffer-regexps '("* Racket REPL *" . normal))
   (add-to-list 'evil-buffer-regexps '("*Customize Group: Emacs*" . normal))
   (add-to-list 'evil-buffer-regexps '("*Packages*" . normal)))
@@ -174,10 +182,10 @@
 
 (use-package elpy
   :ensure t
-  :mode ("\\.py\\'" . python-mode)
-  :interpreter ("python" . python-mode)
+  :defer t
+  :init
+  (advice-add 'python-mode :before 'elpy-enable)
   :config
-  (elpy-enable)
   (add-hook 'highlight-indentation-mode-hook '(lambda()(diminish 'highlight-indentation-mode))))
 
 (use-package restart-emacs
@@ -227,7 +235,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (smex flycheck elpy doom-themes beacon counsel diminish smartparens evil-magit general evil magit projectile rainbow-delimiters geiser spaceline use-package))))
+    (rust-mode smex flycheck elpy doom-themes beacon counsel diminish smartparens evil-magit general evil magit projectile rainbow-delimiters geiser spaceline use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
