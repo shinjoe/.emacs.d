@@ -110,12 +110,12 @@
     :keymaps 'override
     "SPC" 'execute-extended-command
     "TAB" 'dired-sidebar-toggle-sidebar
-    "b" 'switch-to-buffer
     "e" 'eval-last-sexp
     "j" '((lambda()(interactive)(split-window-below)(other-window 1)(switch-to-buffer (get-buffer-create "*scratch*")))
           :which-key "split-below")
     "k" '((lambda()(interactive)(split-window-right)(other-window 1)(switch-to-buffer (get-buffer-create "*scratch*")))
           :which-key "split-right")
+    "l" 'switch-to-buffer
     "g" 'magit-status
     "f" 'projectile-find-file
     "F" 'find-file
