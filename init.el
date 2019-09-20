@@ -184,14 +184,6 @@
   :ensure t
   :hook (after-init . global-company-mode))
 
-(use-package elpy
-  :ensure t
-  :defer t
-  :init
-  (advice-add 'python-mode :before 'elpy-enable)
-  :config
-  (add-hook 'highlight-indentation-mode-hook '(lambda()(diminish 'highlight-indentation-mode))))
-
 (use-package restart-emacs
   :ensure t
   :defer t)
@@ -225,7 +217,6 @@
 (add-hook 'whitespace-mode-hook '(lambda()(diminish 'whitespace-mode)))
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 (add-hook 'with-editor-mode-hook 'evil-insert-state)
-(add-hook 'python-mode-hook 'global-flycheck-mode)
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 (add-hook 'emacs-startup-hook
