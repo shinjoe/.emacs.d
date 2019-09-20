@@ -24,6 +24,10 @@
   :config
   (which-key-mode))
 
+(use-package eglot
+  :ensure t
+  :hook (rust-mode . eglot-ensure))
+
 (use-package rust-mode
   :ensure t
   :mode "\\.rs\\'")
