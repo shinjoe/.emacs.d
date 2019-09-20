@@ -183,7 +183,15 @@
 
 (use-package company
   :ensure t
-  :hook (after-init . global-company-mode))
+  :init
+  (global-company-mode)
+  :bind (:map company-search-map
+              ("C-t" . company-search-toggle-filtering)
+              ("C-n" . company-select-next-or-abort)
+              ("C-p" . company-select-previous-or-abort)
+              :map company-active-map
+              ("C-n" . company-select-next-or-abort)
+              ("C-p" . company-select-previous-or-abort)))
 
 (use-package restart-emacs
   :ensure t
