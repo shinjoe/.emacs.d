@@ -183,8 +183,7 @@
 
 (use-package company
   :ensure t
-  :init
-  (global-company-mode)
+  :hook (after-init . global-company-mode)
   :bind (:map company-search-map
               ("C-t" . company-search-toggle-filtering)
               ("C-n" . company-select-next-or-abort)
