@@ -26,7 +26,8 @@
 
 (use-package eglot
   :ensure t
-  :hook (rust-mode . eglot-ensure))
+  :hook ((rust-mode . eglot-ensure)
+         (python-mode . eglot-ensure)))
 
 (use-package rust-mode
   :ensure t
@@ -222,6 +223,24 @@
 (add-hook 'emacs-startup-hook
           '(lambda()(setq gc-cons-threshold 16777216
                      gc-cons-percentage 0.1)))
+
+(defvar my-prev-whitespace-mode nil)
+(make-variable-buffer-local 'my-prev-whitespace-mode)
+(defun pre-popup-draw ()
+  "Turn off whitespace mode before showing company complete tooltip"
+  (if whitespace-mode
+      (progn
+        (setq my-prev-whitespace-mode t)
+        (whitespace-mode -1)
+        (setq my-prev-whitespace-mode t))))
+(defun post-popup-draw ()
+  "Restore previous whitespace mode after showing company tooltip"
+  (if my-prev-whitespace-mode
+      (progn
+        (whitespace-mode 1)
+        (setq my-prev-whitespace-mode nil))))
+(advice-add 'company-pseudo-tooltip-unhide :before #'pre-popup-draw)
+(advice-add 'company-pseudo-tooltip-hide :after #'post-popup-draw)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
