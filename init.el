@@ -120,6 +120,8 @@
           :which-key "split-below")
     "k" '((lambda()(interactive)(split-window-right)(other-window 1)(switch-to-buffer (get-buffer-create "*scratch*")))
           :which-key "split-right")
+    "K" '((lambda()(interactive)(split-window-right)(other-window 1)(eshell))
+          :which-key "split-right-term")
     "l" 'switch-to-buffer
     "g" 'magit-status
     "f" 'projectile-find-file
