@@ -185,14 +185,7 @@
 
 (use-package company
   :ensure t
-  :hook (after-init . global-company-mode)
-  :bind (:map company-search-map
-              ("C-t" . company-search-toggle-filtering)
-              ("C-n" . company-select-next-or-abort)
-              ("C-p" . company-select-previous-or-abort)
-              :map company-active-map
-              ("C-n" . company-select-next-or-abort)
-              ("C-p" . company-select-previous-or-abort)))
+  :hook (after-init . global-company-mode))
 
 (use-package restart-emacs
   :ensure t
@@ -232,6 +225,13 @@
 (add-hook 'emacs-startup-hook
           '(lambda()(setq gc-cons-threshold 16777216
                      gc-cons-percentage 0.1)))
+
+(with-eval-after-load 'evil
+  (with-eval-after-load 'company
+    (define-key evil-insert-state-map (kbd "C-n") nil)
+    (define-key evil-insert-state-map (kbd "C-p") nil)
+    (evil-define-key nil company-active-map (kbd "C-n") #'company-select-next-or-abort)
+    (evil-define-key nil company-active-map (kbd "C-p") #'company-select-previous-or-abort)))
 
 (defvar my-prev-whitespace-mode nil)
 (make-variable-buffer-local 'my-prev-whitespace-mode)
