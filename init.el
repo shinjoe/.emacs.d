@@ -108,6 +108,10 @@
 (use-package general
   :ensure t
   :config
+  (general-define-key
+   :states 'normal
+   :keymaps 'help-mode-map
+   "q" 'quit-window)
   (general-create-definer my-leader-def
     :prefix "SPC")
   (my-leader-def
