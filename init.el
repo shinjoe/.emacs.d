@@ -109,6 +109,10 @@
   :ensure t
   :config
   (general-define-key
+   :states 'insert
+   :keymaps 'prog-mode-map
+   "C-n" 'company-complete)
+  (general-define-key
    :states 'normal
    :keymaps 'help-mode-map
    "q" 'quit-window)
