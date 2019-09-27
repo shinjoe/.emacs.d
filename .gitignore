@@ -1,6 +1,7 @@
 auto-save-list/
 elpa/
 eshell/
+org/
 server/
 transient/
 projectile-bookmarks.eld
