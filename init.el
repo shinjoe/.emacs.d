@@ -17,6 +17,8 @@
 
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/modes/"))
 
+(use-package sj-helpers
+  :commands (sj-create-minor-mode))
 (use-package pop-pretty
   :hook (python-mode . pop-pretty-mode))
 
@@ -113,7 +115,8 @@
   (general-define-key
    :states 'insert
    :keymaps 'prog-mode-map
-   "C-n" 'company-complete)
+   "C-n" '(lambda()(interactive)(if (company-tooltip-visible-p)(company-select-next)(company-manual-begin)))
+   "C-p" 'company-select-previous)
   (general-define-key
    :states 'normal
    :keymaps '(help-mode-map messages-buffer-mode-map)
@@ -246,13 +249,6 @@
 (add-hook 'emacs-startup-hook
           '(lambda()(setq gc-cons-threshold 16777216
                      gc-cons-percentage 0.1)))
-
-(with-eval-after-load 'evil
-  (with-eval-after-load 'company
-    (define-key evil-insert-state-map (kbd "C-n") nil)
-    (define-key evil-insert-state-map (kbd "C-p") nil)
-    (evil-define-key nil company-active-map (kbd "C-n") #'company-select-next-or-abort)
-    (evil-define-key nil company-active-map (kbd "C-p") #'company-select-previous-or-abort)))
 
 (defvar my-prev-whitespace-mode nil)
 (make-variable-buffer-local 'my-prev-whitespace-mode)
