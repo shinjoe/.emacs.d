@@ -136,6 +136,8 @@
     "g" 'magit-status
     "f" 'projectile-find-file
     "F" 'find-file
+    "O" '((lambda()(interactive)(find-file "~/.emacs.d/org/todo.org"))
+          :which-key "org TODO")
     "p" 'projectile-switch-project
     "s" 'ace-window
     "q" 'restart-emacs
