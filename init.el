@@ -15,8 +15,10 @@
 (eval-when-compile
   (require 'use-package))
 
-(defun rp()
-  (interactive)(elpy-shell-send-region-or-buffer))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/modes/"))
+
+(use-package pop-pretty
+  :hook (python-mode . pop-pretty-mode))
 
 (use-package which-key
   :ensure t
@@ -220,6 +222,7 @@
 (setq scroll-margin 3)
 (setq-default indent-tabs-mode nil)
 (setq whitespace-style '(face tabs spaces empty trailing space-before-tab newline indentation space-after-tab space-mark tab-mark))
+(setq org-agenda-files '("~/.emacs.d/org/"))
 (scroll-bar-mode -1)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
