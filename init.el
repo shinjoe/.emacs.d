@@ -151,6 +151,10 @@
   :ensure t
   :after magit)
 
+(use-package rg
+  :ensure t
+  :defer t)
+
 (use-package doom-themes
   :ensure t
   :config
