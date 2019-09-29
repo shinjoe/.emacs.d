@@ -116,7 +116,12 @@
    "C-n" 'company-complete)
   (general-define-key
    :states 'normal
+   :keymaps '(help-mode-map messages-buffer-mode-map)
    "q" 'quit-window)
+  (general-define-key
+   :states 'motion
+   :keymaps 'org-mode-map
+   "t" 'org-todo)
   (general-create-definer my-leader-def
     :prefix "SPC")
   (my-leader-def
