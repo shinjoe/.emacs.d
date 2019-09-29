@@ -1,7 +1,7 @@
 ;;; -*- lexical-binding: t -*-
 
 (defun sj-create-minor-mode(name)
-  (interactive)
+  (interactive "sEnter name of new minor mode:")
   (let* ((filename (concat name ".el"))
         (full-path (concat "~/.emacs.d/modes/" filename)))
   (with-temp-file full-path
