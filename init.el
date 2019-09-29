@@ -208,7 +208,11 @@
 
 (use-package company
   :ensure t
-  :hook (after-init . global-company-mode))
+  :hook (after-init . global-company-mode)
+  :config
+  (setq company-frontends '(company-pseudo-tooltip-frontend company-echo-metadata-frontend))
+  (setq company-idle-delay 0.1)
+  (setq company-minimum-prefix-length 1))
 
 (use-package restart-emacs
   :ensure t
