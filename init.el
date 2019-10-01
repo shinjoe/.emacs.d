@@ -18,7 +18,7 @@
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/modes/"))
 
 (use-package sj-helpers
-  :commands (sj-create-minor-mode))
+  :commands (sj-create-minor-mode sj-delete))
 (use-package pop-pretty
   :hook (python-mode . pop-pretty-mode))
 
@@ -116,7 +116,8 @@
    :states 'insert
    :keymaps 'prog-mode-map
    "C-n" '(lambda()(interactive)(if (company-tooltip-visible-p)(company-select-next)(company-manual-begin)))
-   "C-p" 'company-select-previous)
+   "C-p" 'company-select-previous
+   "C-<backspace>" 'sj-delete)
   (general-define-key
    :states 'normal
    :keymaps '(help-mode-map messages-buffer-mode-map)
@@ -211,8 +212,8 @@
   :hook (after-init . global-company-mode)
   :config
   (setq company-frontends '(company-pseudo-tooltip-frontend company-echo-metadata-frontend))
-  (setq company-idle-delay 0.1)
-  (setq company-minimum-prefix-length 1))
+  (setq company-idle-delay 0.3)
+  (setq company-minimum-prefix-length 2))
 
 (use-package restart-emacs
   :ensure t
