@@ -18,7 +18,7 @@
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/modes/"))
 
 (use-package sj-helpers
-  :commands (sj-create-minor-mode sj-delete))
+  :commands (sj-create-minor-mode sj-delete sj-toggle-comments))
 (use-package pop-pretty
   :hook (python-mode . pop-pretty-mode))
 
@@ -223,6 +223,7 @@
 (defconst python--prettify-symbols-alist
     '(("lambda"  . ?λ)))
 
+(global-set-key "\C-k" 'sj-toggle-comments)
 (global-set-key "\C-s" 'swiper)
 (global-prettify-symbols-mode 1)
 (global-hl-line-mode 1)
