@@ -10,10 +10,10 @@
     (insert (concat ";;; " filename " ends here")))))
 
 (defun sj-delete()
-  "If on whitespace, deletes it. Otherwise, deletes backward-word in vimlike fashion"
+  "If on whitespace, deletes it. Otherwise, deletes backward-word in vim-like fashion"
   (interactive)
   ;; in evil-insert-mode, the point is shifted over one to the right
-  ;; therefore, to see if we on top of whitespace, we'll temporarily shift left, check and shift right.
+  ;; therefore, to see if we're on top of whitespace, we'll temporarily shift left, check and shift right.
   (backward-char 1)
   (let ((on-whitespace (looking-at-p "[[:space:]]")))
     (forward-char 1)
