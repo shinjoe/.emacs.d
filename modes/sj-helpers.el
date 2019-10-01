@@ -12,7 +12,7 @@
 (defun sj-delete()
   "If on whitespace, deletes it. Otherwise, deletes backward-word in vimlike fashion"
   (interactive)
-  ;; in evil-insert mode, the point is shifted over one to the right
+  ;; in evil-insert-mode, the point is shifted over one to the right
   ;; therefore, to see if we on top of whitespace, we'll temporarily shift left, check and shift right.
   (backward-char 1)
   (let ((on-whitespace (looking-at-p "[[:space:]]")))
