@@ -120,7 +120,7 @@
    "C-<backspace>" 'sj-delete)
   (general-define-key
    :states 'normal
-   :keymaps '(help-mode-map messages-buffer-mode-map)
+   :keymaps '(help-mode-map messages-buffer-mode-map debugger-mode-map)
    "q" 'quit-window)
   (general-define-key
    :states 'motion

@@ -28,14 +28,15 @@
   ;; 1) if on a left paren, we'll comment out the underlying symbolic expression
   ;; 2) if visual chunk selected, we'll comment out all the selected lines
   ;; 3) if leftward comments are detected, comments will be stripped
+  ;; If none of the aforementioned cases are hit, we opt to toggle the current line.
   (save-excursion
-    (let ((beg (point))
-          (on-left-paren (looking-at-p "("))
+    (let ((on-left-paren (looking-at-p "("))
           (in-visual-chunk (string= evil-state "visual"))
-          (in-comment-section nil))
-      (cond (on-left-paren (comment-region beg (progn (mark-sexp) (goto-char (mark)))))
+          (in-comment-section (string= (char-to-string (char-after (back-to-indentation))) ";")))
+      (cond (on-left-paren (comment-region (point) (progn (mark-sexp) (goto-char (mark)))))
             (in-visual-chunk (comment-or-uncomment-region
                               (save-excursion (goto-char (region-beginning))(line-beginning-position))
                               (save-excursion (goto-char (region-end))(line-end-position))))
-            (t "not impl yet :)")))))
+            (in-comment-section (comment-line 1)) ; TODO: del comments up and down
+            (t (comment-line 1))))))
 
