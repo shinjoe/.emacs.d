@@ -31,8 +31,11 @@
   (save-excursion
     (let ((beg (point))
           (on-left-paren (looking-at-p "("))
-          (in-visual-chunk nil)
+          (in-visual-chunk (string= evil-state "visual"))
           (in-comment-section nil))
-    (if on-left-paren (comment-region beg (progn (mark-sexp) (goto-char (mark))))
-      (message "not impl yet :)")))))
+      (cond (on-left-paren (comment-region beg (progn (mark-sexp) (goto-char (mark)))))
+            (in-visual-chunk (comment-or-uncomment-region
+                              (save-excursion (goto-char (region-beginning))(line-beginning-position))
+                              (save-excursion (goto-char (region-end))(line-end-position))))
+            (t "not impl yet :)")))))
 
