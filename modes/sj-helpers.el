@@ -37,6 +37,21 @@
             (in-visual-chunk (comment-or-uncomment-region
                               (save-excursion (goto-char (region-beginning))(line-beginning-position))
                               (save-excursion (goto-char (region-end))(line-end-position))))
-            (in-comment-section (comment-line 1)) ; TODO: del comments up and down
+            (in-comment-section
+               (while (string= (char-to-string (char-after (back-to-indentation))) ";")
+                 (forward-line -1))
+               ;; after the while loop, the current line doesn't have any comments, so need to go down one
+               ;; to get to the line with the first comment
+               (forward-line 1)
+               (back-to-indentation)
+               (let ((beg (point)))
+                 (while (string= (char-to-string (char-after (back-to-indentation))) ";")
+                   (forward-line 1))
+                 (uncomment-region beg (point))))
             (t (comment-line 1))))))
+
+(defun sj-point()
+  (interactive)
+  (message (number-to-string (point))))
+
 
