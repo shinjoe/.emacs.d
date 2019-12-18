@@ -21,6 +21,11 @@
         (delete-horizontal-space)
       (evil-delete-backward-word))))
 
+(defun sj-copy-fullpath()
+  "copies full path of file to clipboard"
+  (interactive)
+  (kill-new (buffer-file-name)))
+
 (defun sj-toggle-comments()
   "intelligently toggles comments based on context"
   (interactive)
