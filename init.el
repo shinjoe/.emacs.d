@@ -28,10 +28,10 @@
   :config
   (which-key-mode))
 
-(use-package eglot
+(use-package lsp-mode
   :ensure t
-  :hook ((rust-mode . eglot-ensure)
-         (python-mode . eglot-ensure)))
+  :hook (lsp-mode . lsp-enable-which-key-integration)
+  :commands (lsp))
 
 (use-package rust-mode
   :ensure t
